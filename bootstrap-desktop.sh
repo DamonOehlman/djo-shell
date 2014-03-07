@@ -17,6 +17,7 @@ VERSION_SOURCECODEPRO=1.017
 
 # install required dependencies to get up and running
 sudo apt-get -y install \
+    build-essential \
     curl unzip \
     git \
     xinit \
