@@ -16,7 +16,7 @@
 VERSION_SOURCECODEPRO=1.017
 
 # install required dependencies to get up and running
-sudo apt-get install \
+sudo apt-get -y install \
     curl unzip \
     git \
     virtualbox-ose-guest-utils virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms
