@@ -20,3 +20,12 @@ sudo apt-get install \
 
     # virtual box video drivers and guest additions
     virtualbox-ose-guest-utils virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms
+    
+# clone dotfiles
+git clone https://github.com/DamonOehlman/dotfiles.git ~/dotfiles
+
+# initialise helpful links
+rm -rf ~/.config
+ln -s ~/dotfiles/config ~/.config
+ln -s ~/dotfiles/.bashrc-custom ~/.bashrc-custom
+echo ". ~/.bashrc-custom" >> ~/.bashrc
