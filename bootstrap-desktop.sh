@@ -21,6 +21,7 @@ sudo apt-get -y install \
     git \
     xinit \
     awesome \
+    synapse lxterminal \
     virtualbox-ose-guest-utils virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms
     
 # clone dotfiles
