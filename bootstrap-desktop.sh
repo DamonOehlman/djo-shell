@@ -17,12 +17,16 @@ VERSION_SOURCECODEPRO=1.017
 
 # install required dependencies to get up and running
 sudo apt-get -y install \
-    curl unzip \
-    git \
+    curl unzip \  # command line tools
+    git \ # git 
+    xinit \ # barebones graphical environment
+    awesome \ # window manager
     virtualbox-ose-guest-utils virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms
     
 # clone dotfiles
-[[ -d ~/dotfiles ]] || git clone https://github.com/DamonOehlman/dotfiles.git ~/dotfiles
+if [[ ! -d ~/dotfiles ]]; then
+  git clone https://github.com/DamonOehlman/dotfiles.git ~/dotfiles
+fi
 
 # initialise helpful links
 rm -rf ~/.config
