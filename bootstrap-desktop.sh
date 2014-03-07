@@ -17,10 +17,10 @@ VERSION_SOURCECODEPRO=1.017
 
 # install required dependencies to get up and running
 sudo apt-get -y install \
-    curl unzip \  # command line tools
-    git \ # git 
-    xinit \ # barebones graphical environment
-    awesome \ # window manager
+    curl unzip \
+    git \
+    xinit \
+    awesome \
     virtualbox-ose-guest-utils virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms
     
 # clone dotfiles
