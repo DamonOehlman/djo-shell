@@ -51,3 +51,10 @@ if [[ ! -d ~/.fonts/SourceCodePro ]]; then
   mv ~/Downloads/SourceCodePro_* ~/.fonts/SourceCodePro
   fc-cache -vf
 fi
+
+# bring in bashinate
+if [[ ! -e ~/bin/bashinate ]]; then
+  mkdir -p ~/bin
+  wget https://bitbucket.org/DamonOehlman/bashinate/raw/master/bashinate -O ~/bin/bashinate
+  chmod a+x ~/bin/bashinate
+fi
