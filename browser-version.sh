@@ -19,7 +19,7 @@ getChromeVersion() {
       ;;
   esac
   
-  echo "chrome $1 $VERSION https://dl.google.com/linux/direct/google-chrome-$1_current_amd64.deb"
+  echo "chrome|$1|$VERSION|https://dl.google.com/linux/direct/google-chrome-$1_current_amd64.deb"
 }
 
 getFirefoxVersion() {
@@ -35,7 +35,7 @@ getFirefoxVersion() {
       ;;
   esac
 
-  echo "firefox $1 $(extractFirefoxVersion $TARGET) $TARGET"
+  echo "firefox|$1|$(extractFirefoxVersion $TARGET)|$TARGET"
 }
 
 case $1 in
