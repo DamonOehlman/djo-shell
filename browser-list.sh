@@ -1,1 +1,1 @@
-parallel ./browser-version.sh ::: chrome firefox ::: stable beta unstable
+parallel `dirname $0`/browser-version* ::: chrome firefox ::: stable beta unstable
