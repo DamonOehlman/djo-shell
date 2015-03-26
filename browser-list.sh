@@ -1,0 +1,1 @@
+parallel ./browser-version.sh ::: chrome firefox ::: stable beta unstable
