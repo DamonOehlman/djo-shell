@@ -41,6 +41,9 @@ firefox|beta|37.0b7|http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/late
 firefox|unstable|39.0a1|http://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/firefox-39.0a1.en-US.linux-x86_64.tar.bz2
 ```
 
+### `npmd-all-the-things`
+
+In preparation for potentially having no net access for a while, I'm using @dominictarr's [npmd](https://github.com/dominictarr/npmd) to bring modules I need (or potentially might use down locally). I'm sure the script can use some improvements, but it works well enough for me know.Basically, head into a parent directory somewhere where you have projects, and then run `npmd-all-the-things`. I've got a few different project containers (personal projects, rtc.io, forks, etc) which means running the script a few times but that's not too much of a hassle.
 
 ## LICENSE
 
