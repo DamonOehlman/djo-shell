@@ -6,7 +6,8 @@
   "bin": {
     "browser-version": "./browser-version.sh",
     "browser-list": "./browser-list.sh",
-    "npmd-all-the-things": "./npmd-all-the-things.sh"
+    "npmd-all-the-things": "./npmd-all-the-things.sh",
+    "dirtygit": "./dirtygit.sh"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
