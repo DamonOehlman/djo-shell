@@ -1,6 +1,6 @@
 {
   "name": "djo-shell",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Shell scripts that I use to play with my sanity (writing = bad, using = good)",
   "main": "index.js",
   "bin": {
