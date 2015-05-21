@@ -6,6 +6,7 @@
   "bin": {
     "browser-version": "./browser-version.sh",
     "browser-list": "./browser-list.sh",
+    "npm-all-the-things": "./npm-all-the-things.sh",
     "npmd-all-the-things": "./npmd-all-the-things.sh",
     "dirtygit": "./dirtygit.sh"
   },
