@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
-BASE_FIREFOX=ftp.mozilla.org/pub/mozilla.org/firefox
-BASE_FIREFOX_NIGHTLY=$BASE_FIREFOX/nightly/latest-trunk
+BASE_FIREFOX=archive.mozilla.org/pub/mozilla.org/firefox
 BASE_FIREFOX_RELEASE=$BASE_FIREFOX/releases
-BASE_FIREFOX_STABLE=$BASE_FIREFOX_RELEASE/latest/linux-x86_64/en-US
-BASE_FIREFOX_BETA=$BASE_FIREFOX_RELEASE/latest-beta/linux-x86_64/en-US
-BASE_FIREFOX_ESR=$BASE_FIREFOX_RELEASE/latest-esr/linux-x86_64/en-US
+
+declare -A FIREFOX_VERSION_URLS
+FIREFOX_VERSION_URLS[stable]=$BASE_FIREFOX_RELEASE/latest/linux-x86_64/en-US/
+FIREFOX_VERSION_URLS[beta]=$BASE_FIREFOX_RELEASE/latest-beta/linux-x86_64/en-US/
+FIREFOX_VERSION_URLS[esr]=$BASE_FIREFOX_RELEASE/latest-esr/linux-x86_64/en-US/
+FIREFOX_VERSION_URLS[nightly]=$BASE_FIREFOX/nightly/latest-trunk/
 
 extractFirefoxVersion() {
   echo $1 | sed -r "s/^.*firefox-([0-9\.ba]+)\..*tar.bz2$/\1/"
@@ -23,23 +25,30 @@ getChromeVersion() {
   echo "chrome|$1|$VERSION|https://dl.google.com/linux/direct/google-chrome-$1_current_amd64.deb"
 }
 
+getFirefoxFilename() {
+  local directory_url="${1}"
+  echo "http://${directory_url}$(curl -s http://"${directory_url}" | grep -e \.tar\.bz2 | sed -r 's/^.*(firefox-[0-9\.ba]+\..*tar.bz2).*/\1/')"
+}
+
+getNightlyFirefoxFilename() {
+  local directory_url="${1}"
+  echo "http://${directory_url}$(curl -s http://"${directory_url}" | grep -e \.linux-x86_64\.tar\.bz2 | sed -r 's/^.*(firefox-[0-9\.ba]+\..*tar.bz2).*/\1/')"
+}
+
 getFirefoxVersion() {
-  case $1 in
-    stable)
-      TARGET=http://$BASE_FIREFOX_STABLE/`curl -s --list-only ftp://$BASE_FIREFOX_STABLE/`
+  local firefox_version="$1"
+  local firefox_url
+
+  case "${firefox_version}" in
+    nightly)
+      firefox_url=$(getNightlyFirefoxFilename ${FIREFOX_VERSION_URLS[$firefox_version]})
       ;;
-    beta)
-      TARGET=http://$BASE_FIREFOX_BETA/`curl -s --list-only ftp://$BASE_FIREFOX_BETA/`
-      ;;
-    unstable)
-      TARGET=http://$BASE_FIREFOX_NIGHTLY/`curl -s --list-only ftp://$BASE_FIREFOX_NIGHTLY/ | grep -e en-US\.linux-x86_64\.tar\.bz2`
-      ;;
-    esr)
-      TARGET=http://$BASE_FIREFOX_ESR/`curl -s --list-only ftp://$BASE_FIREFOX_ESR/`
+    *)
+      firefox_url=$(getFirefoxFilename ${FIREFOX_VERSION_URLS[$firefox_version]})
       ;;
   esac
-
-  echo "firefox|$1|$(extractFirefoxVersion $TARGET)|$TARGET"
+  
+  echo "firefox|$1|$(extractFirefoxVersion $firefox_url)|$firefox_url"
 }
 
 case $1 in
