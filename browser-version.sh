@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-BASE_FIREFOX=archive.mozilla.org/pub/mozilla.org/firefox
+BASE_FIREFOX=archive.mozilla.org/pub/firefox
 BASE_FIREFOX_RELEASE=$BASE_FIREFOX/releases
 
 declare -A FIREFOX_VERSION_URLS
@@ -27,7 +27,7 @@ getChromeVersion() {
 
 getFirefoxFilename() {
   local directory_url="${1}"
-  echo "http://${directory_url}$(curl -s http://"${directory_url}" | grep -e \.tar\.bz2 | sed -r 's/^.*(firefox-[0-9\.ba]+\..*tar.bz2).*/\1/')"
+  echo "http://${directory_url}$(curl -s http://"${directory_url}" | grep -e \.tar\.bz2 | sed -r 's/^.*(firefox-[0-9\.ba]+\..*tar.bz2).*/\1/' | tail -n 1)"
 }
 
 getNightlyFirefoxFilename() {
