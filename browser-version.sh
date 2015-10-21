@@ -32,7 +32,7 @@ getFirefoxFilename() {
 
 getNightlyFirefoxFilename() {
   local directory_url="${1}"
-  echo "http://${directory_url}$(curl -s http://"${directory_url}" | grep -e \.linux-x86_64\.tar\.bz2 | sed -r 's/^.*(firefox-[0-9\.ba]+\..*tar.bz2).*/\1/')"
+  echo "http://${directory_url}$(curl -s http://"${directory_url}" | grep -e \.linux-x86_64\.tar\.bz2 | sed -r 's/^.*(firefox-[0-9\.ba]+\..*tar.bz2).*/\1/' | tail -n 1)"
 }
 
 getFirefoxVersion() {
