@@ -5,7 +5,7 @@ for dir in *; do
   if [ -d "${dir}" ]; then
     pushd "$dir" > /dev/null
 
-    if [ -e package.json ]; then
+    if [ -e package.json ] && [ ! -f .skip ]; then
       echo "reinstalling packages with npm for: ${dir}"
       rm -rf node_modules
 
@@ -13,9 +13,9 @@ for dir in *; do
       # https://github.com/nolanlawson/local-npm/pull/122#issue-154909382
       npm install --cache-min 99999999
 
-      # if npmd failed, then abort
+      # if npm failed, then abort
       if [ $? -ne 0 ]; then
-        exit $?
+        touch "${dir}/.skip"
       fi
     elif [ "$RECURSE" = ":" ]; then
      npm-all-the-things -r
