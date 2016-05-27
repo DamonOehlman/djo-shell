@@ -57,11 +57,15 @@ Iterate through the directories that are direct children of this directory and r
 
 In preparation for potentially having no net access for a while, I'm using @dominictarr's [npmd](https://github.com/dominictarr/npmd) to bring modules I need (or potentially might use down locally). I'm sure the script can use some improvements, but it works well enough for me know.Basically, head into a parent directory somewhere where you have projects, and then run `npmd-all-the-things`. I've got a few different project containers (personal projects, rtc.io, forks, etc) which means running the script a few times but that's not too much of a hassle.
 
+### `npm-all-the-things`
+
+Like `npmd-all-the-things` but just using npm with a really long `cache-min` time.
+
 ## LICENSE
 
 ### ISC
 
-Copyright (c) 2015, Damon Oehlman <damon.oehlman@gmail.com>
+Copyright (c) 2015 - 2016, Damon Oehlman <damon.oehlman@gmail.com>
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
