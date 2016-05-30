@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-getopts ":r:" RECURSE
-
 for dir in *; do
   if [ -d "${dir}" ]; then
     pushd "$dir" > /dev/null
@@ -15,10 +13,8 @@ for dir in *; do
 
       # if npm failed, then abort
       if [ $? -ne 0 ]; then
-        touch "${dir}/.npm-resync-fail"
+        touch .npm-resync-fail
       fi
-    elif [ "$RECURSE" = ":" ]; then
-     npm-all-the-things -r
     fi
 
     popd > /dev/null
