@@ -5,7 +5,7 @@ for dir in *; do
   if [ -d "${dir}" ]; then
     pushd "$dir" > /dev/null
 
-    if [ -e package.json ] && [ ! -f .skip ]; then
+    if [ -e package.json ] && [ ! -f .npm-resync-fail ]; then
       echo "reinstalling packages with npm for: ${dir}"
       rm -rf node_modules
 
@@ -15,7 +15,7 @@ for dir in *; do
 
       # if npm failed, then abort
       if [ $? -ne 0 ]; then
-        touch "${dir}/.skip"
+        touch "${dir}/.npm-resync-fail"
       fi
     elif [ "$RECURSE" = ":" ]; then
      npm-all-the-things -r
