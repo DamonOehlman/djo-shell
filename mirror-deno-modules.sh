@@ -13,7 +13,7 @@ main() {
       popd >/dev/null
     else
       echo "### CLONING ${name}"
-      git clone "${repo}" "${name}"
+      git clone "${repo}" "${name}" || true
     fi
     # echo "${name} | ${repo}"
   done < <(curl -s "${DENO_DB}" | jq -r 'keys[] as $k | [$k, .[$k].repo] | @tsv')
